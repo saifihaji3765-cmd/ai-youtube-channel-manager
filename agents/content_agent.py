@@ -1,19 +1,19 @@
-import openai
-from config import settings
+from openai import OpenAI
+from settings import OPENAI_API_KEY
 
-openai.api_key = settings.OPENAI_API_KEY
+client = OpenAI(api_key=OPENAI_API_KEY)
 
-class ContentAgent:
-    def run(self, topic_data):
-        print("📝 ContentAgent: Generating script")
-        prompt = f"Write a viral YouTube script for the topic: {topic_data['topic']}"
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "You are a creative script writer for YouTube."},
-                {"role": "user", "content": prompt}
-            ]
-        )
-        script = response['choices'][0]['message']['content']
-        print(f"📝 Script generated:\n{script[:100]}...")
-        return script
+def generate_script(topic):
+    prompt = f"""
+    Create a powerful YouTube video script on:
+    {topic}
+
+    Make it engaging, emotional, and viral.
+    """
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+    return response.choices[0].message.content.strip()
