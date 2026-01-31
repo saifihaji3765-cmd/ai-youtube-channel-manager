@@ -1,14 +1,20 @@
-from moviepy.editor import ImageClip, AudioFileClip, concatenate_videoclips
-from config import settings
+import requests, os
+from moviepy.editor import ImageClip, AudioFileClip
+from settings import PEXELS_API_KEY, TEMP_DIR, VIDEO_FPS
 
-class VideoAgent:
-    def run(self, audio_file, topic_data):
-        print("🎬 VideoAgent: Creating video")
-        # Example: Simple static image video with audio
-        clip = ImageClip("sample_image.jpg", duration=10)  # Replace with dynamic visuals later
-        audio = AudioFileClip(audio_file)
-        clip = clip.set_audio(audio)
-        output_video = settings.VIDEO_OUTPUT_PATH
-        clip.write_videofile(output_video, fps=24)
-        print(f"🎬 Video saved: {output_video}")
-        return output_video
+def generate_video(audio_path):
+    headers = {"Authorization": PEXELS_API_KEY}
+    res = requests.get("https://api.pexels.com/v1/search?query=business&per_page=1", headers=headers)
+    image_url = res.json()["photos"][0]["src"]["landscape"]
+
+    image_path = os.path.join(TEMP_DIR, "bg.jpg")
+    with open(image_path, "wb") as f:
+        f.write(requests.get(image_url).content)
+
+    audio = AudioFileClip(audio_path)
+    clip = ImageClip(image_path).set_duration(audio.duration).set_audio(audio)
+
+    output_video = os.path.join(TEMP_DIR, "final_video.mp4")
+    clip.write_videofile(output_video, fps=VIDEO_FPS)
+
+    return output_video
