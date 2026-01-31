@@ -1,0 +1,5 @@
+# config/settings.py
+
+OPENAI_API_KEY = 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
+YOUTUBE_API_KEY = AIzaSyCuO05H_vmndPRgS74yQGFP7hMhUl7ztmI
+VIDEO_OUTPUT_PATH = "output_video.mp4"
