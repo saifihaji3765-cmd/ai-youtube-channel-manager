@@ -1,7 +1,7 @@
 # Core AI dependencies
 openai
 
-# Google / YouTube
+# YouTube / Google API
 google-api-python-client
 google-auth
 google-auth-oauthlib
@@ -11,14 +11,14 @@ google-auth-httplib2
 requests
 
 # Video generation
-moviepy==2.0.0
+moviepy==2.0.0           # Python 3.11+ compatible
 imageio==2.31.1
-imageio-ffmpeg==0.6.0   # ✅ Latest version for Python 3.11+
+imageio-ffmpeg==0.6.0     # ✅ Latest version for Render
 numpy
 Pillow
 
 # Text-to-Speech
-gTTS==2.3.0
+gTTS==2.3.0               # free + compatible
 
 # Environment / audio
 python-dotenv
