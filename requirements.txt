@@ -18,8 +18,7 @@ numpy
 Pillow
 
 # Text to Speech
-gtts
-coqui-ai-tts
+gTTS==2.3.0
 
 # Environment variables
 python-dotenv
