@@ -1,9 +1,32 @@
+# OpenAI API
 openai
+
+# YouTube + Google APIs
 google-api-python-client
 google-auth
 google-auth-oauthlib
 google-auth-httplib2
+
+# HTTP Requests
 requests
+
+# Video editing / generation
 moviepy
+imageio
+imageio-ffmpeg
+numpy
+Pillow
+
+# Text to Speech
 gtts
+coqui-ai-tts
+
+# Environment variables
 python-dotenv
+
+# Audio processing
+pydub
+scipy
+
+# Misc
+tqdm
