@@ -1,31 +1,27 @@
-# OpenAI API
+# Core AI dependencies
 openai
 
-# YouTube + Google APIs
+# Google / YouTube
 google-api-python-client
 google-auth
 google-auth-oauthlib
 google-auth-httplib2
 
-# HTTP Requests
+# HTTP
 requests
 
-# Video editing / generation
-moviepy
-imageio
-imageio-ffmpeg
+# Video generation
+moviepy==2.0.0
+imageio==2.31.1
+imageio-ffmpeg==0.4.10
 numpy
 Pillow
 
-# Text to Speech
+# Text-to-Speech
 gTTS==2.3.0
 
-# Environment variables
+# Environment / audio
 python-dotenv
-
-# Audio processing
 pydub
 scipy
-
-# Misc
 tqdm
